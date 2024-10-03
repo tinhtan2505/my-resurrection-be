@@ -15,5 +15,15 @@ public class JwtResponse {
         this.authorities = authorities;
     }
 
-    // Getters
+    public String getToken() {
+        return token;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
 }
