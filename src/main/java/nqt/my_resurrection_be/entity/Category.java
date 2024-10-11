@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nqt.my_resurrection_be.entity.enums.CategoryType;
+import nqt.my_resurrection_be.enums.CategoryType;
 
 import java.util.UUID;
 

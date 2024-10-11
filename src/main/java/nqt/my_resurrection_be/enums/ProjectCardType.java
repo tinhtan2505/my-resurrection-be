@@ -1,4 +1,4 @@
-package nqt.my_resurrection_be.entity.enums;
+package nqt.my_resurrection_be.enums;
 
 public enum ProjectCardType {
     PROJECT_REQUIREMENT("Project Requirement"),

@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nqt.my_resurrection_be.entity.enums.ProjectCardStatus;
-import nqt.my_resurrection_be.entity.enums.ProjectCardType;
+import nqt.my_resurrection_be.enums.ProjectCardStatus;
+import nqt.my_resurrection_be.enums.ProjectCardType;
 
 import java.util.List;
 import java.util.UUID;
