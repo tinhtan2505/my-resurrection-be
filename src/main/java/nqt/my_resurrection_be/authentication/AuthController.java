@@ -59,6 +59,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signupRequest) {
         // Kiểm tra xem username đã tồn tại chưa
+        var a = userRepository.existsByUsername(signupRequest.getUsername());
         if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()

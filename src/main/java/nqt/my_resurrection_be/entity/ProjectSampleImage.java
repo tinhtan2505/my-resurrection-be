@@ -18,10 +18,10 @@ public class ProjectSampleImage extends BaseEntity {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @ManyToOne
-    @JoinColumn(name = "attachment_id", insertable = false, updatable = false)
+    @JoinColumn(name = "attachment_id")
     private Attachment attachment;
 }

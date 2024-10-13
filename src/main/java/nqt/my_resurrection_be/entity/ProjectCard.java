@@ -35,11 +35,11 @@ public class ProjectCard extends BaseEntity {
     private boolean isDefault;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "creator_id", insertable = false, updatable = false)
+    @JoinColumn(name = "creator_id")
     private User creator;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @OneToMany(mappedBy = "projectCard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

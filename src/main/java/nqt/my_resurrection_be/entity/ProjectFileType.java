@@ -18,10 +18,10 @@ public class ProjectFileType extends BaseEntity {
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "file_type_id", insertable = false, updatable = false)
+    @JoinColumn(name = "file_type_id")
     private Category fileType;
 }

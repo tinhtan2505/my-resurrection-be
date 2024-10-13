@@ -54,23 +54,23 @@ public class Project extends BaseEntity {
     private LocalDateTime deadline = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "creator_id", insertable = false, updatable = false)
+    @JoinColumn(name = "creator_id")
     private User creator;
 
     @ManyToOne
-    @JoinColumn(name = "saler_id", insertable = false, updatable = false)
+    @JoinColumn(name = "saler_id")
     private User saler;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id")
     private User customer;
 
     @ManyToOne
-    @JoinColumn(name = "status_id", insertable = false, updatable = false)
+    @JoinColumn(name = "status_id")
     private Category status;
 
     @ManyToOne
-    @JoinColumn(name = "status_for_customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "status_for_customer_id")
     private Category statusForCustomer;
 
     @JsonIgnore

@@ -25,10 +25,10 @@ public class FilesUploadDropbox extends BaseEntity {
     private boolean isUpload;
 
     @ManyToOne
-    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @ManyToOne
-    @JoinColumn(name = "uploader_id", insertable = false, updatable = false)
+    @JoinColumn(name = "uploader_id")
     private User uploader;
 }

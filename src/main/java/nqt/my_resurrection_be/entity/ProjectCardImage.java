@@ -27,10 +27,10 @@ public class ProjectCardImage extends BaseEntity {
     private Boolean isAutoCapture;
 
     @ManyToOne
-    @JoinColumn(name = "project_card_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_card_id")
     private ProjectCard projectCard;
 
     @ManyToOne
-    @JoinColumn(name = "attachment_id", insertable = false, updatable = false)
+    @JoinColumn(name = "attachment_id")
     private Attachment attachment;
 }
