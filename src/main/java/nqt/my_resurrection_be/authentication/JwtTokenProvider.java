@@ -1,7 +1,6 @@
 package nqt.my_resurrection_be.authentication;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,19 +25,33 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    // Validate JWT token
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(jwtSecret)
+                    .build()
+                    .parseClaimsJws(token);
             return true;
-        } catch (Exception e) {
-            // Handle token validation exceptions
+        } catch (ExpiredJwtException e) {
+            System.out.println("Token đã hết hạn");
+        } catch (UnsupportedJwtException e) {
+            System.out.println("Token không được hỗ trợ");
+        } catch (MalformedJwtException e) {
+            System.out.println("Token không hợp lệ");
+        } catch (SignatureException e) {
+            System.out.println("Chữ ký token không hợp lệ");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Yêu cầu token rỗng");
         }
         return false;
     }
 
+    // Lấy username từ token
     public String getUsernameFromToken(String token) {
-        return Jwts.parser()
+        return Jwts.parserBuilder()
                 .setSigningKey(jwtSecret)
+                .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();

@@ -1,5 +1,6 @@
 package nqt.my_resurrection_be.authentication;
 
+import jakarta.servlet.http.HttpServletRequest;
 import nqt.my_resurrection_be.authentication.dto.SignupRequest;
 import nqt.my_resurrection_be.authentication.dto.SignupResponse;
 import nqt.my_resurrection_be.entity.User;
@@ -12,10 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -89,6 +87,29 @@ public class AuthController {
         userRepository.save(user);
 
         return ResponseEntity.ok(new SignupResponse("User registered successfully!"));
+    }
+
+    @GetMapping("/check-token")
+    public ResponseEntity<?> checkTokenValidity(HttpServletRequest request) {
+        String authorizationHeader = request.getHeader("Authorization");
+
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token is missing or invalid");
+        }
+
+        String token = authorizationHeader.replace("Bearer ", "");
+
+        try {
+            // Kiểm tra tính hợp lệ của token
+            if (jwtTokenProvider.validateToken(token)) {
+                // Nếu token hợp lệ, trả về mã 200 OK
+                return ResponseEntity.ok("Token is valid");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token is invalid");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token is invalid or expired");
+        }
     }
 }
 
