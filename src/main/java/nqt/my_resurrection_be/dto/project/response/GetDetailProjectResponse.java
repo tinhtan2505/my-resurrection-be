@@ -34,4 +34,6 @@ public class GetDetailProjectResponse {
     private boolean isTesting = false;
 
     private LocalDateTime deadline = LocalDateTime.now();
+
+    private String statusForCustomer;
 }

@@ -16,6 +16,6 @@ public class ProjectService implements IProjectService {
     @Override
     public List<GetDetailProjectResponse> getAll() {
         List<GetDetailProjectResponse> record = repository.getAll();
-        return null;
+        return record;
     }
 }

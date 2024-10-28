@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/project")
+@RequestMapping("api/v1.0/project")
 @Tag(name = "Project")
 public class ProjectController {
     @Autowired

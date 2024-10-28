@@ -39,7 +39,7 @@ public class Category extends BaseEntity {
     @Transient
     private boolean isActive = true;
 
-    @Enumerated(EnumType.STRING) // Lưu giá trị enum dưới dạng chuỗi
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "category_type")
     private CategoryType categoryType;
 }

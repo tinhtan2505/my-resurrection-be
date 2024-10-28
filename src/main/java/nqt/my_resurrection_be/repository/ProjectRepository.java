@@ -25,7 +25,9 @@ public interface ProjectRepository extends JpaRepository<Project, UUID> {
                     "p.price, " +
                     "p.totalAmount, " +
                     "p.isTesting, " +
-                    "p.deadline) "
-                    + "FROM Project p")
+                    "p.deadline, " +
+                    "c.label) " +
+                    "FROM Project p " +
+                    "LEFT JOIN Category c ON c.id = p.statusForCustomer.id ")
     List<GetDetailProjectResponse> getAll();
 }
